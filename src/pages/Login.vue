@@ -1,11 +1,12 @@
 <template>
-  <b-container fluid style="height: -webkit-fill-available">
+  <b-container fluid style="height: -webkit-fill-available; background-image: url('https://cdn.pixabay.com/photo/2013/07/13/09/49/neighbors-156089_960_720.png');">
     <b-row style="height: -webkit-fill-available">
       <b-col></b-col>
       <b-col align-self="center">
-        <b-card bg-variant="light">
+        <b-card>
           <h2>GİRİŞ SAYFASI</h2>
           <hr />
+
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <b-form-group
               id="input-group-1"
@@ -42,8 +43,15 @@
             >
               Beni Hatırla
             </b-form-checkbox>
-
             <b-button type="submit" variant="primary">Giriş Yap</b-button>
+            <p class="text-xs-center">
+              <router-link to="/register"
+                >Bir hesaba mı ihtiyacınız var?</router-link
+              >
+            </p>
+            <p class="text-xs-center">
+              <router-link to="/">Parolayı Unuttum</router-link>
+            </p>
           </b-form>
         </b-card>
       </b-col>
@@ -51,8 +59,6 @@
     </b-row>
   </b-container>
 </template>
-
-
 <script>
 export default {
   data() {
@@ -63,18 +69,18 @@ export default {
         submit: [],
         checked: [],
       },
-     
 
       show: true,
     };
   },
+
   methods: {
     onSubmit(event) {
-        console.log(this.form.email);
-        console.log(this.form.password);
-        
+      console.log(this.form.email);
+      console.log(this.form.password);
+
       event.preventDefault();
-     // alert(JSON.stringify(this.form));
+      // alert(JSON.stringify(this.form));
     },
     onReset(event) {
       event.preventDefault();
@@ -82,7 +88,7 @@ export default {
       this.form.email = "";
       this.form.password = "";
       this.form.checked = [];
-      
+
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
@@ -95,6 +101,7 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+
 h2 {
   text-align: center;
   font-family: "Roboto", sans-serif;
