@@ -1,9 +1,9 @@
 <template>
-  <b-container fluid style="height: -webkit-fill-available; background-image: url('https://cdn.pixabay.com/photo/2013/07/13/09/49/neighbors-156089_960_720.png');">
+  <b-container fluid style="height: -webkit-fill-available; background-image: url('https://cdn.pixabay.com/photo/2017/02/06/11/49/city-2042634_960_720.png');">
     <b-row style="height: -webkit-fill-available">
       <b-col></b-col>
       <b-col align-self="center">
-        <b-card>
+        <b-card class="card border-primary mb-3" >
           <h2>GİRİŞ SAYFASI</h2>
           <hr />
 
@@ -45,6 +45,7 @@
             </b-form-checkbox>
             <b-button type="submit" variant="primary">Giriş Yap</b-button>
             <p class="text-xs-center">
+              <br>
               <router-link to="/register"
                 >Bir hesaba mı ihtiyacınız var?</router-link
               >
