@@ -17,7 +17,7 @@ pipeline {
 
         stage('Run') {
             steps {
-                sh 'docker run -d -p 8081:80 --rm --name komsum-ui-app bsessevmez/komsum-ui-app:0.0.1'
+                sh 'docker run -d -p 8081:8080 --rm --name komsum-ui-app bsessevmez/komsum-ui-app:0.0.1'
             }
         }
 
