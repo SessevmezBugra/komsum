@@ -4,7 +4,7 @@
       <b-col></b-col>
       <b-col align-self="center">
         <b-card>
-          <h2>GİRİŞ SAYFASI</h2>
+          <h2>GİRİŞ SAYFASI Test</h2>
           <hr />
 
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
