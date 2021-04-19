@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid style="height: -webkit-fill-available; background-image: url('https://cdn.pixabay.com/photo/2017/02/06/11/49/city-2042634_960_720.png');">
+  <b-container fluid style="height: -webkit-fill-available; background-image: url('https://image.freepik.com/free-vector/apartement-neighbors-are-greeting-each-other-through-window_209620-238.jpg');">
     <b-row style="height: -webkit-fill-available">
       <b-col></b-col>
       <b-col align-self="center">
@@ -62,6 +62,10 @@
 </template>
 <script>
 export default {
+  components:{
+    
+
+  },
   data() {
     return {
       form: {
@@ -70,12 +74,12 @@ export default {
         submit: [],
         checked: [],
       },
-
       show: true,
     };
   },
 
   methods: {
+  
     onSubmit(event) {
       console.log(this.form.email);
       console.log(this.form.password);
