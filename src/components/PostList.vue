@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Post from "../pages/Post.vue";
+import Post from "./Post.vue";
 
 export default {
   components: {
