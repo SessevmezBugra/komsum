@@ -2,7 +2,7 @@
     <b-container>
         <b-row class="p-3">
             <b-col cols="12">
-      <b-card bg-variant="dark" text-variant="white" :title="index.header" v-for="index in data" :key="index" class="mt-4">
+      <b-card bg-variant="" text-variant="white" :title="index.header" v-for="index in data" :key="index" class="mt-4">
   <b-card-text>
      {{index.content}}
   </b-card-text>
