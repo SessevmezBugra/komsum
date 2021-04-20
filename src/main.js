@@ -5,7 +5,7 @@ import App from './App.vue'
 import Register from './pages/Register.vue'
 import Login from './pages/Login.vue'
 import Home from './pages/Home.vue'
-import Post from './pages/Post.vue'
+import PostList from './components/PostList.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -21,7 +21,7 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     { path: '/', component: Home },
-    { path: '/post', component: Post },
+    { path: '/post', component: PostList },
 ]
 
 
