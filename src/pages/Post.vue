@@ -8,6 +8,9 @@
           >  </b-form-textarea>
       
         </b-col>
+        <b-col cols="12">
+          <post-list/>
+        </b-col>
       </b-row>
     </b-container>
   </div>
@@ -15,7 +18,12 @@
 
 
 <script>
+import PostList from "../components/PostList.vue"
+
 export default{
+  components : {
+    "post-list" : PostList
+  },
     props: ["header", "content"]
 };
 </script>
