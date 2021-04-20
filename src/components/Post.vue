@@ -6,7 +6,6 @@
           <h1>{{ header }}</h1>
           <b-form-textarea id="textarea" plaintext :value="content"  rows="3" max-rows="6"
           >  </b-form-textarea>
-      
         </b-col>
       </b-row>
     </b-container>
@@ -15,7 +14,9 @@
 
 
 <script>
+
 export default{
+
     props: ["header", "content"]
 };
 </script>
