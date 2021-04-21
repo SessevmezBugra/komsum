@@ -6,7 +6,7 @@
         <b-card class="card border-primary mb-3" >
           <h2>GİRİŞ SAYFASI</h2>
           <hr />
-
+          
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <b-form-group
               id="input-group-1"
