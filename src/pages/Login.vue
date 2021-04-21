@@ -1,5 +1,6 @@
 <template>
   <b-container fluid style="height: -webkit-fill-available; background-image: url('https://image.freepik.com/free-vector/apartement-neighbors-are-greeting-each-other-through-window_209620-238.jpg');">
+  
     <b-row style="height: -webkit-fill-available">
       <b-col></b-col>
       <b-col align-self="center">
@@ -61,11 +62,8 @@
   </b-container>
 </template>
 <script>
-export default {
-  components:{
-    
 
-  },
+export default {
   data() {
     return {
       form: {
