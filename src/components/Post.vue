@@ -24,11 +24,15 @@ export default{
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
  #post-component{
   border: 1px solid;
-  box-shadow: 5px 5px 5px 5px #c4c7be;
-  border: 1px solid rgb(153, 153, 153);
+  box-shadow: 2px 2px 2px 2px #c4c7be;
+  border: 1px solid rgb(231, 231, 231);
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 15px;
 }
+#post-component:hover{
+     background: rgb(250, 250, 250); 
+     box-shadow: 1px 5px 2px rgb(186, 186, 187);
+} 
 .date{
   text-align: right;
    padding-bottom: 75px;

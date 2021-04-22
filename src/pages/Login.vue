@@ -1,10 +1,10 @@
 <template>
-  <b-container fluid style="height: -webkit-fill-available; background-image: url('https://image.freepik.com/free-vector/apartement-neighbors-are-greeting-each-other-through-window_209620-238.jpg');">
+  <b-container fluid style="height: -webkit-fill-available; background-image: url('';">
   
     <b-row style="height: -webkit-fill-available">
       <b-col></b-col>
       <b-col align-self="center">
-        <b-card class="card border-primary mb-3" >
+        <b-card class="card border-light mb-3"  style="background-image: url(https://blog.prezi.com/wp-content/uploads/2019/04/02-light-blue-1024x768.jpg)"> 
           <h2>GİRİŞ SAYFASI</h2>
           <hr />
           
@@ -44,7 +44,7 @@
             >
               Beni Hatırla
             </b-form-checkbox>
-            <b-button type="submit" variant="primary">Giriş Yap</b-button>
+            <b-button  type="submit" variant="primary">Giriş Yap</b-button>
             <p class="text-xs-center">
               <br>
               <router-link to="/register"
@@ -113,4 +113,5 @@ button {
   float: right;
   
 }
+
 </style>
