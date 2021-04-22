@@ -8,9 +8,9 @@
   <b-container fluid>
     <b-row class="p-3">
       <b-col>
-        <b-row v-for="postData in data" :key="postData.header" class="mt-2">
+        <b-row v-for="postData in data" :key="postData.avatar" class="mt-2">
           <b-container fluid>
-            <post :header="postData.header" :content="postData.content" />
+            <post :avatar="postData.avatar" :name="postData.name" :date="postData.date"/>
           </b-container>
         </b-row>
       </b-col>
@@ -32,21 +32,26 @@ export default {
     return {
       data: [
         {
-          header: "test 1",
-          content: "Deneme 1",
+          avatar: "person-circle",
+          name: "Deneme 1",
+          date: "21.01.1995"
         },
         {
-          header: "test 2",
-          content: "Deneme 2",
+          avatar: "person-circle",
+          name: "Deneme 2",
+          date: "21.01.1995"
         },
         {
-          header: "test 3",
-          content: "Deneme 3",
+          avatar: "person-circle",
+          name: "Deneme 3",
+          date: "21.01.1995"
         },
         {
-          header: "test 4",
-          content: "Deneme 4",
+          avatar: "person-circle",
+          name: "Deneme 4",
+          date: "21.01.1995"
         },
+       
       ],
     };
   },

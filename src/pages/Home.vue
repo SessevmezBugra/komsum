@@ -3,10 +3,9 @@
     <b-container fluid>
       <b-row>
         <b-col>
-          <b-button variant="danger">Button</b-button>
           <router-link to="/register">Register</router-link> |
           <router-link to="/login">Login</router-link> |
-          <router-link to="/post">Post</router-link>
+          
         </b-col>
       </b-row>
       <b-row>
