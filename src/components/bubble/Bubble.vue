@@ -14,12 +14,12 @@ export default {
 
 <style scoped>
 .bubble-container{
-height: 50px;
-width: 100spx;
+height: 30px;
+width: 70px;
  overflow: hidden;
   margin-top: 30px;
   color: rgb(0, 0, 0);
-  background: skyblue;
+  background:  rgb(250, 250, 250);
   -webkit-border-top-right-radius: 25px;
   -webkit-border-bottom-right-radius: 125x;
   -webkit-border-bottom-left-radius: 25px;
@@ -33,12 +33,13 @@ width: 100spx;
   border-bottom-left-radius: 25px;
   border-top-left-radius: 25px;
   display: inline-block;
-  padding: 15px;                                    
+  padding: 10px;   
+  border: 1px solid rgb(231, 231, 231);
+  box-shadow: 2px 2px 2px 2px #c4c7be;                                 
 }
 h3{
-  font-size: 18px;
-  text-align: center;
-   font-family:'Josefin Sans', sans-serif;
+  font-size: 12px;
+  font-family:'Josefin Sans', sans-serif;
 }
 
 </style>
