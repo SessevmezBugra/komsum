@@ -16,10 +16,12 @@ export default {
 .bubble-container{
 height: 30px;
 width: 70px;
- overflow: hidden;
+ overflow: hidden; /* duzeltilecek */
   margin-top: 30px;
   color: rgb(0, 0, 0);
   background:  rgb(250, 250, 250);
+
+ /* duzeltilecek */
   -webkit-border-top-right-radius: 25px;
   -webkit-border-bottom-right-radius: 125x;
   -webkit-border-bottom-left-radius: 25px;
@@ -32,7 +34,11 @@ width: 70px;
   border-bottom-right-radius: 25px;
   border-bottom-left-radius: 25px;
   border-top-left-radius: 25px;
-  display: inline-block;
+   /* duzeltilecek */
+
+
+  display: inline-block; /* duzeltilecek */
+  
   padding: 10px;   
   border: 1px solid rgb(231, 231, 231);
   box-shadow: 2px 2px 2px 2px #c4c7be;                                 
