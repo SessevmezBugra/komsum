@@ -1,10 +1,5 @@
 <template>
-  <div>
-    <div class="bubble-container">
-      <div>
-      <bubble/>
-    </div>
-    </div>
+
   <b-container fluid>
     <b-row class="p-3">
       <b-col>
@@ -16,17 +11,17 @@
       </b-col>
     </b-row>
   </b-container>
-  </div>
+  
 </template>
 
 <script>
 import Post from "./Post.vue";
-import Bubble from "./Bubble.vue";
+
 
 export default {
   components: {
     "post" : Post,
-    "bubble" : Bubble
+
   },
   data() {
     return {
@@ -60,11 +55,5 @@ export default {
 
 <style scoped>
 
-.bubble-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
 
 </style>

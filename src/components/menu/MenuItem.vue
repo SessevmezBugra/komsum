@@ -23,14 +23,16 @@ export default{
     background-color:white;
     border: 2px solid white;
     border-radius: 25px;
-     transition: box-shadow .10;
+     transition: box-shadow .1;
      font-family:'Josefin Sans', sans-serif;
-     font-size: 20px;
+     font-size: 23px;
      width: 190px !important;
+     margin-top: 25px;
 
 }
 .menu-container:hover{
-     box-shadow: 0px 5px 48px slateblue;
-     transition: box-shadow .5;
+     box-shadow: 0px 5px 5px skyblue;
+     transition: box-shadow .3;
+    
 } 
 </style>
