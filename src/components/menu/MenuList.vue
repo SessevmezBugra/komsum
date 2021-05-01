@@ -11,6 +11,7 @@
 
 <script>
 import MenuItem from "./MenuItem";
+//TEST
 export default {
   components: {
     "menu-item": MenuItem,
