@@ -22,7 +22,7 @@
         <div></div>
         <!-- <h1>Arkaplan rengi</h1>
         <div class="color">
-          <input
+          <input ///TEST
             type="text"
             v-bind:style="{ color: color }"
             v-model="color"
