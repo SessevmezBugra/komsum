@@ -1,10 +1,14 @@
 <template>
     <div class="app" v-bind:style="{ backgroundColor: color }">
       <b-container fluid>
+        <b-row class="justify-content-md-center"> 
+          <b-col cols="6">
+          <nav-bar/>
+          </b-col>
+        </b-row>
         <b-row>
           <b-col>
-            <router-link to="/register">Register</router-link> |
-            <router-link to="/login">Login</router-link>
+          
           </b-col>
         </b-row>
         <b-row>
@@ -38,12 +42,14 @@
 import PostList from "../components/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
 import BubbleList from "../components//bubble/BubbleList";
+import Navbar from "../components/navs/Navbar";
 
 export default {
   components: {
     "post-list": PostList,
     "menu-list": MenuList,
     "bubble-list": BubbleList,
+    "nav-bar": Navbar,
   },
   name: "Home Tet",
   data() {
