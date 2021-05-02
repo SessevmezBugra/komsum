@@ -13,10 +13,15 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VueRouter);
+Vue.use(VueAxios, axios)
+
 
 const routes = [
     { path: '/login', component: Login },

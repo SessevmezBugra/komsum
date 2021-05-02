@@ -13,7 +13,7 @@
         </b-row>
         <b-row>
           <b-col cols="3">
-            <bubble-list></bubble-list>
+            <bubble-list :bubbles="bubblesData"></bubble-list>
             </b-col>
           <b-col cols="6">
             <post-list></post-list>
@@ -43,6 +43,8 @@ import PostList from "../components/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
 import BubbleList from "../components//bubble/BubbleList";
 import Navbar from "../components/navs/Navbar";
+import Vue from "vue";
+
 
 export default {
   components: {
@@ -56,9 +58,23 @@ export default {
     return {
       selectedItem: null,
       color: { color: "" },
+      bubblesData: []
     };
   },
-  methods: {},
+  methods: {
+    getCities() {
+      Vue.axios.get("http://46.101.87.81:4000/geography/city").then((response) => {
+        for(var data of response.data) {
+          this.bubblesData.push({
+            filter: data.name
+          });
+        }
+      });
+    }
+  },
+  created() {
+    this.getCities();
+  }
 };
 </script>
 
