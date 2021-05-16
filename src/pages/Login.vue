@@ -1,6 +1,6 @@
 <template>
+
   <b-container fluid style="height: -webkit-fill-available; background-image: url('';">
-  
     <b-row style="height: -webkit-fill-available">
       <b-col></b-col>
       <b-col align-self="center">
@@ -62,7 +62,6 @@
   </b-container>
 </template>
 <script>
-
 export default {
   data() {
     return {
@@ -77,6 +76,7 @@ export default {
   },
 
   methods: {
+    
   
     onSubmit(event) {
       console.log(this.form.email);
