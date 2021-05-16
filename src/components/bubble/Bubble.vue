@@ -1,25 +1,34 @@
 <template>
 
-    <div class="bubble-container">
+    <div @click="sendToParent"  class="bubble-container">
+     
       <h3>{{filter}}</h3>
     </div>
 
 </template>
 
 <script>
+
 export default {
-  props: ["filter"],
+  props: ["filter","bubbleBus", "filterId"],
+  methods : {
+    sendToParent() {
+      this.bubbleBus.$emit("onClickBubble", this.filterId);
+    },
+  }
 };
 </script>
 
 <style scoped>
 .bubble-container{
+  cursor: pointer;
 height: 30px;
 width: 70px;
  overflow: hidden; /* duzeltilecek */
   margin-top: 30px;
   color: rgb(0, 0, 0);
   background:  rgb(250, 250, 250);
+  
 
  /* duzeltilecek */
   -webkit-border-top-right-radius: 25px;

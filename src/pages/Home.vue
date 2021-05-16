@@ -1,30 +1,35 @@
 <template>
-    <div class="app" v-bind:style="{ backgroundColor: color }">
-      <b-container fluid>
-        <b-row class="justify-content-md-center"> 
-          <b-col cols="6">
-          <nav-bar/>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-          
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col cols="3">
-            <bubble-list :bubbles="bubblesData"></bubble-list>
-            </b-col>
-          <b-col cols="6">
-            <post-list></post-list>
-          </b-col>
-          
-          <b-col cols="3"><menu-list></menu-list> </b-col>
-        </b-row>
-      </b-container>
-    
-        <div></div>
-        <!-- <h1>Arkaplan rengi</h1>
+  <div class="app" v-bind:style="{ backgroundColor: color }">
+    <b-container fluid>
+      <b-row class="justify-content-md-center">
+        <b-col cols="6">
+          <nav-bar />
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col> </b-col>
+      </b-row>
+      <b-row>
+        <b-col cols="3">
+          <side-bar>
+          <bubble-list
+            :bubbleListBus="bus"
+            class="bubbles"
+            :bubbles="bubblesData"
+          >
+          </bubble-list>
+          </side-bar>
+        </b-col>
+        <b-col cols="6">
+          <post-list></post-list>
+        </b-col>
+
+        <b-col cols="3"><menu-list></menu-list> </b-col>
+      </b-row>
+    </b-container>
+
+    <div></div>
+    <!-- <h1>Arkaplan rengi</h1>
         <div class="color">
           <input ///TEST
             type="text"
@@ -35,16 +40,16 @@
           />
           <input type="color" v-model="color" />
         </div> -->
-      </div>
+  </div>
 </template>
 
 <script>
+import Sidebar from "../components/navs/Sidebar.vue";
 import PostList from "../components/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
 import BubbleList from "../components//bubble/BubbleList";
 import Navbar from "../components/navs/Navbar";
 import Vue from "vue";
-
 
 export default {
   components: {
@@ -52,29 +57,53 @@ export default {
     "menu-list": MenuList,
     "bubble-list": BubbleList,
     "nav-bar": Navbar,
+    "side-bar": Sidebar,
   },
   name: "Home Tet",
   data() {
     return {
       selectedItem: null,
       color: { color: "" },
-      bubblesData: []
+      bubblesData: [],
+      denemeData: [],
+      bus: new Vue(),
     };
   },
   methods: {
     getCities() {
-      Vue.axios.get("http://46.101.87.81:4000/geography/city").then((response) => {
-        for(var data of response.data) {
-          this.bubblesData.push({
-            filter: data.name
-          });
-        }
-      });
-    }
+      Vue.axios
+        .get("http://46.101.87.81:4000/geography/city")
+        .then((response) => {
+          for (var data of response.data) {
+            this.bubblesData.push({
+              filter: data.name,
+              filterId: data.id,
+            });
+          }
+        });
+    },
+    getDistrict() {},
+
+    onClickChild(filterId) {
+      console.log(filterId);
+      Vue.axios
+        .get("http://46.101.87.81:4000/geography/district/city/" + filterId)
+        .then((response) => {
+          for (var data of response.data) {
+            this.bubblesData.push({
+              filter: data.name,
+            });
+          }
+          console.log(this.denemeData);
+        });
+    },
+  },
+  mounted() {
+    this.bus.$on("onClickBubble", this.onClickChild);
   },
   created() {
     this.getCities();
-  }
+  },
 };
 </script>
 
@@ -102,5 +131,4 @@ input[type="color"] {
  
  
 } */
-
 </style>
