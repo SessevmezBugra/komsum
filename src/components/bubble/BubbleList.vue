@@ -3,7 +3,7 @@
     <b-row class="mt-2">
         <b-col cols="4" v-for="bubbleData in bubbles" :key="bubbleData.filter">
          
-            <bubble :bubbleBus="bubbleListBus"  :filter="bubbleData.filter" :filterId="bubbleData.filterId" />
+            <bubble :bubbleBus="bubbleListBus" :areaType="bubbleData.areaType"  :filter="bubbleData.filter" :filterId="bubbleData.filterId" />
       </b-col>
     </b-row>
   </b-container>

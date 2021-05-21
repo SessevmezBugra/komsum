@@ -10,10 +10,10 @@
 <script>
 
 export default {
-  props: ["filter","bubbleBus", "filterId"],
+  props: ["filter","bubbleBus", "filterId", "areaType"],
   methods : {
     sendToParent() {
-      this.bubbleBus.$emit("onClickBubble", this.filterId);
+      this.bubbleBus.$emit("onClickBubble", {filterId: this.filterId, areaType: this.areaType});
     },
   }
 };

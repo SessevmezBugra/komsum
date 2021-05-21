@@ -12,12 +12,12 @@
       <b-row>
         <b-col cols="3">
           <side-bar>
-          <bubble-list
-            :bubbleListBus="bus"
-            class="bubbles"
-            :bubbles="bubblesData"
-          >
-          </bubble-list>
+            <bubble-list
+              :bubbleListBus="bus"
+              class="bubbles"
+              :bubbles="bubblesData"
+            >
+            </bubble-list>
           </side-bar>
         </b-col>
         <b-col cols="6">
@@ -78,24 +78,66 @@ export default {
             this.bubblesData.push({
               filter: data.name,
               filterId: data.id,
+              areaType: "CITY",
             });
           }
         });
     },
-    getDistrict() {},
-
-    onClickChild(filterId) {
-      console.log(filterId);
+    getDistrictByCityId(cityId) {
       Vue.axios
-        .get("http://46.101.87.81:4000/geography/district/city/" + filterId)
+        .get("http://46.101.87.81:4000/geography/district/city/" + cityId)
         .then((response) => {
           for (var data of response.data) {
             this.bubblesData.push({
               filter: data.name,
+              filterId: data.id,
+              areaType: "DISTRICT",
             });
           }
-          console.log(this.denemeData);
         });
+    },
+    getNeighborhoodsByDistrictId(districtId) {
+      Vue.axios
+        .get(
+          "http://46.101.87.81:4000/geography/neighborhood/district/" +
+            districtId
+        )
+        .then((response) => {
+          for (var data of response.data) {
+            this.bubblesData.push({
+              filter: data.name,
+              filterId: data.id,
+              areaType: "NEIGHBORHOOD",
+            });
+          }
+        });
+    },
+    getStreetsByNeighborhoodId(neighborhoodId) {
+      Vue.axios
+        .get("http://46.101.87.81:4000/geography/street/neighborhood/" + neighborhoodId)
+        .then((response) => {
+          for (var data of response.data) {
+            this.bubblesData.push({
+              filter: data.name,
+              filterId: data.id,
+              areaType: "STREET",
+            });
+            console.log("sokak");
+          }
+        });
+    },
+
+    onClickChild(data) {
+      this.bubblesData = [];
+      if (data.areaType == "CITY") {
+        this.getDistrictByCityId(data.filterId);
+      } else if (data.areaType == "DISTRICT") {
+        this.getNeighborhoodsByDistrictId(data.filterId);
+      } else if (data.areaType == "NEIGHBORHOOD") {
+        this.getStreetsByNeighborhoodId(data.filterId);
+      } else {
+        return 
+      }
     },
   },
   mounted() {
@@ -106,6 +148,9 @@ export default {
   },
 };
 </script>
+
+
+
 
 <style>
 /* h1{
