@@ -38,7 +38,7 @@
 
 <script>
 import Sidebar from "../components/navs/Sidebar.vue";
-import PostList from "../components/PostList.vue";
+import PostList from "../components/post/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
 import Navbar from "../components/navs/Navbar";
 import Vue from "vue";
@@ -50,7 +50,7 @@ export default {
     "nav-bar": Navbar,
     "side-bar": Sidebar,
   },
-  name: "Home Tet",
+  name: "Home",
   data() {
     return {
       selectedItem: null,

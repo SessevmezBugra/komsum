@@ -5,7 +5,7 @@ import App from './App.vue'
 import Register from './pages/Register.vue'
 import Login from './pages/Login.vue'
 import Home from './pages/Home.vue'
-import PostList from './components/PostList.vue'
+import PostList from './components/post/PostList.vue'
 
 
 import 'bootstrap/dist/css/bootstrap.css'

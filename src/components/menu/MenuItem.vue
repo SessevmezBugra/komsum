@@ -1,16 +1,21 @@
 <template>
-  <b-container class="menu-container">
+  <b-container @click="sendToParent"  class="menu-container">
     <b-row>
       <!-- <b-col cols="2"> <b-icon :icon="icon" font-scale="1"></b-icon></b-col>
       <p class="h1 mb-2">Icon <b-icon icon="exclamation-circle-fill"></b-icon></p> -->
       <b-col cols="12"  > <b-icon :icon="icon" font-scale="1"  ></b-icon> {{ text }}  </b-col>
     </b-row>
   </b-container>
-</template>
+</template> 
 
 <script>
 export default {
-  props: ["icon", "text"],
+  props: ["icon", "text", "menuKey", "menuBus"],
+  methods:{
+    sendToParent(){
+      this.menuBus.$emit("onClickMenu", { menuKey: this.menuKey } );
+    },
+    }
 };
 </script>
 
