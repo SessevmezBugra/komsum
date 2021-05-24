@@ -1,79 +1,114 @@
 <template>
-
-  <div class="sidebar">
-    <div class="sidebar-backdrop"
-         @click="closeSidebarPanel" 
-         v-if="isPanelOpen">
-    </div>
-    <transition name="slide">
-      <div v-if="isPanelOpen"
-           class="sidebar-panel">
-        <slot></slot>
-      </div>
-    </transition>
-  </div>
+  <b-container>
+    <b-sidebar id="sidebar-1" title="komsum" width="370px" shadow>
+      <bubble-list :bubbleListBus="bus" class="bubbles" :bubbles="bubblesData">
+      </bubble-list>
+    </b-sidebar>
+  </b-container>
 </template>
 
 <script>
+import BubbleList from "../bubble/BubbleList";
+import Vue from "vue";
+
 export default {
-    data() {
-    return {
-      isPanelOpen: true
-    }
+  components: {
+    "bubble-list": BubbleList,
   },
-    methods: {
-    closeSidebarPanel() {   
-      this.isPanelOpen = true
-    }
-  }
-}
+  data() {
+    return {
+      selectedItem: null,
+      color: { color: "" },
+      bubblesData: [],
+      denemeData: [],
+      bus: new Vue(),
+    };
+  },
+  methods: {
+    getCities() {
+      Vue.axios
+        .get("http://46.101.87.81:4000/geography/city")
+        .then((response) => {
+          for (var data of response.data) {
+            this.bubblesData.push({
+              filter: data.name,
+              filterId: data.id,
+              areaType: "CITY",
+            });
+          }
+        });
+    },
+    getDistrictByCityId(cityId) {
+      Vue.axios
+        .get("http://46.101.87.81:4000/geography/district/city/" + cityId)
+        .then((response) => {
+          for (var data of response.data) {
+            this.bubblesData.push({
+              filter: data.name,
+              filterId: data.id,
+              areaType: "DISTRICT",
+            });
+          }
+        });
+    },
+    getNeighborhoodsByDistrictId(districtId) {
+      Vue.axios
+        .get(
+          "http://46.101.87.81:4000/geography/neighborhood/district/" +
+            districtId
+        )
+        .then((response) => {
+          for (var data of response.data) {
+            this.bubblesData.push({
+              filter: data.name,
+              filterId: data.id,
+              areaType: "NEIGHBORHOOD",
+            });
+          }
+        });
+    },
+    getStreetsByNeighborhoodId(neighborhoodId) {
+      Vue.axios
+        .get(
+          "http://46.101.87.81:4000/geography/street/neighborhood/" +
+            neighborhoodId
+        )
+        .then((response) => {
+          for (var data of response.data) {
+            this.bubblesData.push({
+              filter: data.name,
+              filterId: data.id,
+              areaType: "STREET",
+            });
+            console.log("sokak");
+          }
+        });
+    },
+
+    onClickChild(data) {
+      this.bubblesData = [];
+      if (data.areaType == "CITY") {
+        this.getDistrictByCityId(data.filterId);
+      } else if (data.areaType == "DISTRICT") {
+        this.getNeighborhoodsByDistrictId(data.filterId);
+      } else if (data.areaType == "NEIGHBORHOOD") {
+        this.getStreetsByNeighborhoodId(data.filterId);
+      } else {
+        return;
+      }
+    },
+  },
+  mounted() {
+    this.bus.$on("onClickBubble", this.onClickChild);
+  },
+  created() {
+    this.getCities();
+  },
+};
 </script>
 
 
 
+
 <style  scoped>
-body{
-  height: 100%; margin: 0; padding: 0;
-}
-
-input:focus,
-input::-moz-focus-inner { 
-  border: 0;
-  outline: 0;
-}
-
-/* sidebar styles */
-
-.slide-enter-active,
-.slide-leave-active
-{
-  transition: transform 0.2s ease;
-}
-
-.slide-enter,
-.slide-leave-to {
-  transform: translateX(-100%);
-  transition: all 150ms ease-in 0s
-}
-
-.sidebar-backdrop {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-}
-
-.sidebar-panel {
-  overflow-y: scroll;
-  background-color: #bdc3c7;
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  z-index: 999;
-  padding: 3rem 20px 2rem 20px;
-  width: 300px;
-}
 </style>

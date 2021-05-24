@@ -11,14 +11,7 @@
       </b-row>
       <b-row>
         <b-col cols="3">
-          <side-bar>
-            <bubble-list
-              :bubbleListBus="bus"
-              class="bubbles"
-              :bubbles="bubblesData"
-            >
-            </bubble-list>
-          </side-bar>
+          <side-bar> </side-bar>
         </b-col>
         <b-col cols="6">
           <post-list></post-list>
@@ -47,7 +40,6 @@
 import Sidebar from "../components/navs/Sidebar.vue";
 import PostList from "../components/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
-import BubbleList from "../components//bubble/BubbleList";
 import Navbar from "../components/navs/Navbar";
 import Vue from "vue";
 
@@ -55,7 +47,6 @@ export default {
   components: {
     "post-list": PostList,
     "menu-list": MenuList,
-    "bubble-list": BubbleList,
     "nav-bar": Navbar,
     "side-bar": Sidebar,
   },
@@ -114,7 +105,10 @@ export default {
     },
     getStreetsByNeighborhoodId(neighborhoodId) {
       Vue.axios
-        .get("http://46.101.87.81:4000/geography/street/neighborhood/" + neighborhoodId)
+        .get(
+          "http://46.101.87.81:4000/geography/street/neighborhood/" +
+            neighborhoodId
+        )
         .then((response) => {
           for (var data of response.data) {
             this.bubblesData.push({
@@ -136,7 +130,7 @@ export default {
       } else if (data.areaType == "NEIGHBORHOOD") {
         this.getStreetsByNeighborhoodId(data.filterId);
       } else {
-        return 
+        return;
       }
     },
   },
