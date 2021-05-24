@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <b-sidebar id="sidebar-1" title="komsum" width="370px" shadow>
-      <bubble-list :bubbleListBus="bus" class="bubbles" :bubbles="bubblesData">
+      <bubble-list :bubbleListBus="bus" class="bubbles" :bubbles="fillBubbles">
       </bubble-list>
     </b-sidebar>
   </b-container>
@@ -10,6 +10,8 @@
 <script>
 import BubbleList from "../bubble/BubbleList";
 import Vue from "vue";
+import { FETCH_CITY } from "../../store/actions.type";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -22,23 +24,46 @@ export default {
       bubblesData: [],
       denemeData: [],
       bus: new Vue(),
+      bubbleType: null,
     };
+  },
+  computed: {
+    fillBubbles() {
+      var bubblesData = [];
+      if (this.bubbleType == "CITY") {
+        for (var data of this.cities) {
+          bubblesData.push({
+            filter: data.name,
+            filterId: data.id,
+            areaType: "CITY",
+          });
+        }
+      }
+      // else if(this.bubbleType == "DISTRICT") {
+
+      // }
+      return bubblesData;
+    },
+    ...mapGetters(["cities"]),
   },
   methods: {
     getCities() {
-      Vue.axios
-        .get("http://46.101.87.81:4000/geography/city")
-        .then((response) => {
-          for (var data of response.data) {
-            this.bubblesData.push({
-              filter: data.name,
-              filterId: data.id,
-              areaType: "CITY",
-            });
-          }
-        });
+      this.bubbleType = "CITY";
+      this.$store.dispatch(FETCH_CITY);
+      // Vue.axios
+      //   .get("http://46.101.87.81:4000/geography/city")
+      //   .then((response) => {
+      //     for (var data of response.data) {
+      //       this.bubblesData.push({
+      //         filter: data.name,
+      //         filterId: data.id,
+      //         areaType: "CITY",
+      //       });
+      //     }
+      //   });
     },
     getDistrictByCityId(cityId) {
+      this.bubbleType = "DISTRICT";
       Vue.axios
         .get("http://46.101.87.81:4000/geography/district/city/" + cityId)
         .then((response) => {
@@ -52,6 +77,7 @@ export default {
         });
     },
     getNeighborhoodsByDistrictId(districtId) {
+      this.bubbleType = "NEIGHBORHOOD";
       Vue.axios
         .get(
           "http://46.101.87.81:4000/geography/neighborhood/district/" +
@@ -68,6 +94,7 @@ export default {
         });
     },
     getStreetsByNeighborhoodId(neighborhoodId) {
+      this.bubbleType = "STREET";
       Vue.axios
         .get(
           "http://46.101.87.81:4000/geography/street/neighborhood/" +
