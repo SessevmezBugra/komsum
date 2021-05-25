@@ -3,7 +3,7 @@
   <b-container fluid>
     <b-row class="p-3">
       <b-col>
-        <b-row v-for="postData in  postListData" :key="postData.avatar" class="mt-2">
+        <b-row v-for="postData in fillPosts" :key="postData.avatar" class="mt-2">
           <b-container fluid>
             
             <post avatar="person-circle" :userName="postData.username" :content="postData.content" :date="postData.date"/>
@@ -17,7 +17,8 @@
 
 <script>
 import Post from "./Post.vue";
-import Vue from "vue";
+import { mapGetters } from 'vuex';
+import { FETCH_POST } from '../../store/actions.type';
 
 
 export default {
@@ -27,21 +28,26 @@ export default {
   },
   data() {
     return {
-      postListData:[]    
+         
     };
   },
-   methods: {
-    getPosts() {
-      Vue.axios.get("http://46.101.87.81:4000/post").then((response) => {
-        for(var data of response.data) {
-          this.postListData.push({
+  computed: {
+    ...mapGetters(["posts"]),
+    fillPosts() {
+      var postListData = []; 
+      for(var data of this.posts) {
+          postListData.push({
             username:data.username,
              content: data.content, 
              date: data.createdAt
           });
         }
-        console.log(this.postListData);
-      });
+        return postListData;
+    }
+  },
+   methods: {
+    getPosts() {
+      this.$store.dispatch(FETCH_POST);
     }
   },
   created() {

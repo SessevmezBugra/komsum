@@ -24,6 +24,7 @@
 
 <script>
 import Vue from "vue";
+import { FETCH_POST } from '../../store/actions.type';
 
 export default {
   props: ["addPostBus"],
@@ -43,8 +44,9 @@ export default {
       };
       Vue.axios
         .post("http://46.101.87.81:4000/post", newPost)
-        .then((response) => {
-          this.addPost = response.data;
+        .then(() => {
+          this.$store.dispatch(FETCH_POST);
+
         });
       this.postContent = null;
     },

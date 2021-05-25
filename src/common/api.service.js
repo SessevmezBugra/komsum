@@ -22,3 +22,9 @@ export const GeographyService = {
           .get("http://46.101.87.81:4000/geography/street/neighborhood/" + neighborhoodId);
       },
 }
+
+export const PostService = {
+  getPosts() {
+    return Vue.axios.get("http://46.101.87.81:4000/post");
+  }
+}
