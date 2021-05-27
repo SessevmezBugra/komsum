@@ -1,7 +1,12 @@
 <template>
   <div>
-    <b-navbar class="" toggleable="lg"  variant="secondary">
-      <b-icon icon="filter" font-scale="2"  v-b-toggle.sidebar-1 variant="light"></b-icon>
+    <b-navbar class="" toggleable="lg" variant="secondary">
+      <b-icon
+        icon="filter"
+        font-scale="2"
+        v-b-toggle.sidebar-1
+        variant="light"
+      ></b-icon>
       <b-navbar-brand href="#" @click="denemeData()">Komşum</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -19,22 +24,7 @@
             </div>
           <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
         </b-nav-form> -->
-          <b-nav-item-dropdown right>
-            <!-- Using 'button-content' slot -->
-            <template #button-content>
-              <em>User</em>
-            </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-            <b-dropdown-item href="#">
-              <router-link to="/login">Login</router-link></b-dropdown-item
-            >
-            <b-dropdown-item href="#">
-              <router-link to="/register"
-                >Register</router-link
-              ></b-dropdown-item
-            >
-          </b-nav-item-dropdown>
+       
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -45,9 +35,7 @@
 export default {
   props: ["selectedBubbles"],
   data() {
-    return {
-     
-    };
+    return {};
   },
 
   methods: {

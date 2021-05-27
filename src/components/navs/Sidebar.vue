@@ -10,7 +10,13 @@
 <script>
 import BubbleList from "../bubble/BubbleList";
 import Vue from "vue";
-import { FETCH_CITY } from "../../store/actions.type";
+import {
+  ADD_SELECTED_AREA,
+  FETCH_CITY,
+  FETCH_DISTRICT,
+  FETCH_NEIGHBORHOOD,
+  FETCH_STREET,
+} from "../../store/actions.type";
 import { mapGetters } from "vuex";
 
 export default {
@@ -31,88 +37,63 @@ export default {
     fillBubbles() {
       var bubblesData = [];
       if (this.bubbleType == "CITY") {
-        for (var data of this.cities) {
+        for (var city of this.cities) {
           bubblesData.push({
-            filter: data.name,
-            filterId: data.id,
+            filter: city.name,
+            filterId: city.id,
             areaType: "CITY",
           });
         }
+      } else if (this.bubbleType == "DISTRICT") {
+        for (var district of this.districts) {
+          bubblesData.push({
+            filter: district.name,
+            filterId: district.id,
+            areaType: "DISTRICT",
+          });
+        }
+      } else if (this.bubbleType == "NEIGHBORHOOD") {
+        for (var neighborhood of this.neighborhoods) {
+          bubblesData.push({
+            filter: neighborhood.name,
+            filterId: neighborhood.id,
+            areaType: "NEIGHBORHOOD",
+          });
+        }
+      } else if (this.bubbleType == "STREET") {
+        for (var street of this.streets) {
+          bubblesData.push({
+            filter: street.name,
+            filterId: street.id,
+            areaType: "STREET",
+          });
+        }
       }
-      // else if(this.bubbleType == "DISTRICT") {
 
-      // }
       return bubblesData;
     },
-    ...mapGetters(["cities"]),
+    ...mapGetters(["cities", "districts", "neighborhoods", "streets"]),
   },
   methods: {
     getCities() {
       this.bubbleType = "CITY";
       this.$store.dispatch(FETCH_CITY);
-      // Vue.axios
-      //   .get("http://46.101.87.81:4000/geography/city")
-      //   .then((response) => {
-      //     for (var data of response.data) {
-      //       this.bubblesData.push({
-      //         filter: data.name,
-      //         filterId: data.id,
-      //         areaType: "CITY",
-      //       });
-      //     }
-      //   });
     },
     getDistrictByCityId(cityId) {
       this.bubbleType = "DISTRICT";
-      Vue.axios
-        .get("http://46.101.87.81:4000/geography/district/city/" + cityId)
-        .then((response) => {
-          for (var data of response.data) {
-            this.bubblesData.push({
-              filter: data.name,
-              filterId: data.id,
-              areaType: "DISTRICT",
-            });
-          }
-        });
+      this.$store.dispatch(FETCH_DISTRICT, cityId);
     },
     getNeighborhoodsByDistrictId(districtId) {
       this.bubbleType = "NEIGHBORHOOD";
-      Vue.axios
-        .get(
-          "http://46.101.87.81:4000/geography/neighborhood/district/" +
-            districtId
-        )
-        .then((response) => {
-          for (var data of response.data) {
-            this.bubblesData.push({
-              filter: data.name,
-              filterId: data.id,
-              areaType: "NEIGHBORHOOD",
-            });
-          }
-        });
+      this.$store.dispatch(FETCH_NEIGHBORHOOD, districtId);
     },
     getStreetsByNeighborhoodId(neighborhoodId) {
       this.bubbleType = "STREET";
-      Vue.axios
-        .get(
-          "http://46.101.87.81:4000/geography/street/neighborhood/" +
-            neighborhoodId
-        )
-        .then((response) => {
-          for (var data of response.data) {
-            this.bubblesData.push({
-              filter: data.name,
-              filterId: data.id,
-              areaType: "STREET",
-            });
-            console.log("sokak");
-          }
-        });
+      this.$store.dispatch(FETCH_STREET, neighborhoodId);
     },
 
     onClickChild(data) {
+      this.$store.dispatch(ADD_SELECTED_AREA, data);
       this.bubblesData = [];
       if (data.areaType == "CITY") {
         this.getDistrictByCityId(data.filterId);
@@ -121,7 +102,7 @@ export default {
       } else if (data.areaType == "NEIGHBORHOOD") {
         this.getStreetsByNeighborhoodId(data.filterId);
       } else {
-        return;
+        this.bubbleType = "EMPTY";
       }
     },
   },

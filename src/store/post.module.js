@@ -14,7 +14,7 @@ const initialState = {
     posts: []
 }
 
-export const state = { ...initialState };
+export const state = {...initialState };
 
 export const actions = {
     async [FETCH_POST](context) {

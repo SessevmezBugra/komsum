@@ -4,6 +4,7 @@
       <b-row class="justify-content-md-center">
         <b-col cols="6">
           <nav-bar />
+          <filter-bar />
         </b-col>
       </b-row>
       <b-row>
@@ -37,6 +38,7 @@
 </template>
 
 <script>
+import FilterBar from "../components/navs/FilterBar.vue";
 import Sidebar from "../components/navs/Sidebar.vue";
 import PostList from "../components/post/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
@@ -49,6 +51,7 @@ export default {
     "menu-list": MenuList,
     "nav-bar": Navbar,
     "side-bar": Sidebar,
+    "filter-bar": FilterBar,
   },
   name: "Home",
   data() {

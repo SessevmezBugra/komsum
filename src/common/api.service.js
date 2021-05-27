@@ -4,27 +4,27 @@ export const GeographyService = {
 
     getCities() {
         return Vue.axios
-          .get("http://46.101.87.81:4000/geography/city");
+            .get("http://46.101.87.81:4000/geography/city");
     },
 
     getDistrictByCityId(cityId) {
         return Vue.axios
-          .get("http://46.101.87.81:4000/geography/district/city/" + cityId);
-      },
+            .get("http://46.101.87.81:4000/geography/district/city/" + cityId);
+    },
 
-      getNeighborhoodsByDistrictId(districtId) {
+    getNeighborhoodsByDistrictId(districtId) {
         return Vue.axios
-          .get("http://46.101.87.81:4000/geography/neighborhood/district/" + districtId);
-      },
+            .get("http://46.101.87.81:4000/geography/neighborhood/district/" + districtId);
+    },
 
-      getStreetsByNeighborhoodId(neighborhoodId) {
+    getStreetsByNeighborhoodId(neighborhoodId) {
         return Vue.axios
-          .get("http://46.101.87.81:4000/geography/street/neighborhood/" + neighborhoodId);
-      },
+            .get("http://46.101.87.81:4000/geography/street/neighborhood/" + neighborhoodId);
+    },
 }
 
 export const PostService = {
-  getPosts() {
-    return Vue.axios.get("http://46.101.87.81:4000/post");
-  }
+    getPosts() {
+        return Vue.axios.get("http://46.101.87.81:4000/post");
+    }
 }
