@@ -4,7 +4,7 @@
       <b-col>
         <b-form-tag
           v-for="selectedArea in selectedAreas"
-          @remove="remove()"
+          @remove="remove(selectedArea)"
           :key="selectedArea.filterId"
           :title="selectedArea.filter"
           variant="success"
@@ -19,24 +19,20 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { REMOVE_SELECTED_AREA } from '../../store/actions.type';
 export default {
   data() {
-    return {
-     
-    };
+    return {};
   },
   computed: {
     ...mapGetters(["selectedAreas"]),
   },
   methods: {
-      remove(selectedArea) {
-          console.log("Silme");
-          this.selectedAreas.splice(selectedArea, 1);
-      }
-       
-
+    remove(selectedArea) {
+      this.$store.dispatch(REMOVE_SELECTED_AREA, selectedArea);
+      console.log("Filterbar tıklandı", selectedArea);
     },
-
+  },
 };
 </script>
 
