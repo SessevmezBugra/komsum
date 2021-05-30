@@ -5,6 +5,8 @@ import {
     FETCH_NEIGHBORHOOD,
     FETCH_STREET,
     REMOVE_SELECTED_AREA,
+    UPDATE_SELECTED_AREAS,
+    UPDATE_BUBBLE_AREAS
 } from "./actions.type";
 
 import {
@@ -13,7 +15,9 @@ import {
     SET_NEIGHBORHOOD,
     SET_STREET,
     SET_SELECTED_AREA,
-    REMOVE_SELECTED_AREA_FROM_SELECTED_AREAS
+    SET_SELECTED_AREAS,
+    REMOVE_SELECTED_AREA_FROM_SELECTED_AREAS,
+    SET_BUBBLE_AREAS
 } from "./mutation.type"
 
 import {
@@ -26,6 +30,7 @@ const initialState = {
     neighborhoods: [],
     streets: [],
     selectedAreas: [],
+    bubbleAreas: [],
 }
 
 export const state = {...initialState };
@@ -33,6 +38,7 @@ export const state = {...initialState };
 export const actions = {
     async [FETCH_CITY](context) {
         const { data } = await GeographyService.getCities();
+        console.log("Test", data);
         context.commit(SET_CITY, data);
     },
     async [FETCH_DISTRICT](context, cityId) {
@@ -52,6 +58,12 @@ export const actions = {
     },
     [REMOVE_SELECTED_AREA](context, selectedArea) {
         context.commit(REMOVE_SELECTED_AREA_FROM_SELECTED_AREAS, selectedArea);
+    },
+    [UPDATE_SELECTED_AREAS](context, selectedAreas) {
+        context.commit(SET_SELECTED_AREAS, selectedAreas);
+    },
+    [UPDATE_BUBBLE_AREAS](context, bubbleAreas) {
+        context.commit(SET_BUBBLE_AREAS, bubbleAreas);
     }
 }
 
@@ -72,46 +84,14 @@ export const mutations = {
         state.selectedAreas.push(selectedArea);
     },
     [REMOVE_SELECTED_AREA_FROM_SELECTED_AREAS](state, selectedArea) {
-        let tmpSelectedAreas = [...state.selectedAreas];
-
-        if (selectedArea.areaType == "CITY") {
-            for (let index = 0; index < state.selectedAreas.length; index++) {
-                const element = state.selectedAreas[index];
-
-                if (element.areaType == "DISTRICT") {
-                    tmpSelectedAreas = tmpSelectedAreas.filter((item) => item.filterId !== element.filterId); //ES6
-                } else if (element.areaType == "NEIGHBORHOOD") {
-                    tmpSelectedAreas = tmpSelectedAreas.filter((item) => item.filterId !== element.filterId); //ES6
-                } else if (element.areaType == "STREET") {
-                    tmpSelectedAreas = tmpSelectedAreas.filter((item) => item.filterId !== element.filterId); //ES6
-
-                }
-
-            }
-        } else if (selectedArea.areaType == "DISTRICT") {
-            for (let el = 0; el < state.selectedAreas.length; el++) {
-                const deneme = state.selectedAreas[el];
-                if (deneme.areaType == "NEIGHBORHOOD") {
-                    tmpSelectedAreas = tmpSelectedAreas.filter((item) => item.filterId !== deneme.filterId);
-                } else if (deneme.areaType == "STREET") {
-                    tmpSelectedAreas = tmpSelectedAreas.filter((item) => item.filterId !== deneme.filterId);
-                }
-
-            }
-
-
-        } else if (selectedArea.areaType == "NEIGHBORHOOD") {
-            for (let index = 0; index < state.selectedAreas.length; index++) {
-                const element = state.selectedAreas[index];
-                if (element.areaType == "STREET") {
-                    tmpSelectedAreas = tmpSelectedAreas.filter((item) => item.filterId !== element.filterId);
-                }
-
-            }
-
-        }
-        state.selectedAreas = tmpSelectedAreas.filter((item) => item.filterId !== selectedArea.filterId); //ES6
-        console.log("geograpy tıklandı", selectedArea);
+        state.selectedAreas = state.selectedAreas.filter((item) => item.filterId !== selectedArea.filterId); //ES6
+    },
+    [SET_SELECTED_AREAS](state, selectedAreas) {
+        state.selectedAreas = selectedAreas;
+    },
+    [SET_BUBBLE_AREAS](state, bubbleAreas) {
+        console.log("bubbleareas", bubbleAreas);
+        state.bubbleAreas = bubbleAreas;
     }
 
 }
@@ -132,6 +112,9 @@ const getters = {
     selectedAreas(state) {
         return state.selectedAreas;
     },
+    bubbleAreas(state) {
+        return state.bubbleAreas;
+    }
 }
 
 export default {
