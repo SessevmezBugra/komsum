@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import FilterBar from "../components/navs/FilterBar.vue";
-import Sidebar from "../components/navs/Sidebar.vue";
+import FilterBar from "../components/navs/filter-bar/FilterBar.vue";
+import Sidebar from "../components/navs/side-bar/Sidebar";
 import PostList from "../components/post/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
 import Navbar from "../components/navs/Navbar";

@@ -1,14 +1,12 @@
 <template>
   <b-container>
-    <b-sidebar id="sidebar-1" title="komsum" width="370px" shadow>
       <bubble-list :bubbleListBus="bus" class="bubbles" :bubbles="bubbleAreas">
       </bubble-list>
-    </b-sidebar>
   </b-container>
 </template>
 
 <script>
-import BubbleList from "../bubble/BubbleList";
+import BubbleList from "../../bubble/BubbleList";
 import Vue from "vue";
 import {
   ADD_SELECTED_AREA,
@@ -17,7 +15,7 @@ import {
   FETCH_NEIGHBORHOOD,
   FETCH_STREET,
   UPDATE_BUBBLE_AREAS,
-} from "../../store/actions.type";
+} from "../../../store/actions.type";
 import { mapGetters } from "vuex";
 
 export default {

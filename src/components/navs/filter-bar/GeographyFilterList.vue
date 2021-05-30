@@ -1,7 +1,5 @@
 <template>
   <b-container>
-    <b-row>
-      <b-col>
         <b-form-tag
           v-for="selectedArea in selectedAreas"
           @remove="remove(selectedArea)"
@@ -12,8 +10,6 @@
           style="font-size: 0.8rem"
           >{{ selectedArea.filter }}
         </b-form-tag>
-      </b-col>
-    </b-row>
   </b-container>
 </template>
 
@@ -28,7 +24,7 @@ import {
   FETCH_STREET,
   UPDATE_BUBBLE_AREAS,
   ADD_SELECTED_AREA,
-} from "../../store/actions.type";
+} from "../../../store/actions.type";
 export default {
   data() {
     return {};
