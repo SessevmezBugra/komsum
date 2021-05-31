@@ -61,8 +61,8 @@ export default {
           }
         }
       } else if (selectedArea.areaType == "DISTRICT") {
-        // this.getDistrictByCityId(this.selectedAreas.find(x => x.this.selectedAreas == ));
-        console.log("test",this.selectedAreas);
+         this.getDistrictByCityId();
+        console.log("test",this.selectedAreas.cityId);
         for (let el = 0; el < this.selectedAreas.length; el++) {
           const deneme = this.selectedAreas[el];
           if (deneme.areaType == "NEIGHBORHOOD") {
