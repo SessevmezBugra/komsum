@@ -24,7 +24,7 @@ import {
   FETCH_STREET,
   UPDATE_BUBBLE_AREAS,
   ADD_SELECTED_AREA,
-} from "../../../store/actions.type";
+} from "../../../store/geography/actions.type";
 export default {
   data() {
     return {};

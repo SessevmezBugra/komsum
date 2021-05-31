@@ -15,7 +15,7 @@ import {
   FETCH_NEIGHBORHOOD,
   FETCH_STREET,
   UPDATE_BUBBLE_AREAS,
-} from "../../../store/actions.type";
+} from "../../../store/geography/actions.type";
 import { mapGetters } from "vuex";
 
 export default {

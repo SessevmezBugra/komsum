@@ -18,11 +18,11 @@ import {
     SET_SELECTED_AREAS,
     REMOVE_SELECTED_AREA_FROM_SELECTED_AREAS,
     SET_BUBBLE_AREAS
-} from "./mutation.type"
+} from "./mutations.type"
 
 import {
     GeographyService
-} from "../common/api.service"
+} from "../../common/api.service"
 
 const initialState = {
     cities: [],

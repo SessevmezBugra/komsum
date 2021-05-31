@@ -24,7 +24,7 @@
 
 <script>
 import Vue from "vue";
-import { FETCH_POST } from '../../store/actions.type';
+import { FETCH_POST } from '../../store/post/actions.type';
 
 export default {
   props: ["addPostBus"],
