@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import geography from "./geography.module";
-import post from "./post.module";
+import geography from "./geography/geography.module";
+import post from "./post/post.module";
 
 Vue.use(Vuex);
 

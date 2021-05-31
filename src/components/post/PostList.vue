@@ -18,7 +18,7 @@
 <script>
 import Post from "./Post.vue";
 import { mapGetters } from 'vuex';
-import { FETCH_POST } from '../../store/actions.type';
+import { FETCH_POST } from '../../store/post/actions.type';
 
 
 export default {

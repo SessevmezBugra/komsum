@@ -1,6 +1,6 @@
 import {
     PostService
-} from "../common/api.service";
+} from "../../common/api.service";
 
 import {
     FETCH_POST
@@ -8,7 +8,7 @@ import {
 
 import {
     SET_POST
-} from "./mutation.type";
+} from "./mutations.type";
 
 const initialState = {
     posts: []
