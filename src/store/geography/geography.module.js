@@ -38,7 +38,6 @@ export const state = {...initialState };
 export const actions = {
     async [FETCH_CITY](context) {
         const { data } = await GeographyService.getCities();
-        console.log("Test", data);
         context.commit(SET_CITY, data);
     },
     async [FETCH_DISTRICT](context, cityId) {
@@ -90,7 +89,6 @@ export const mutations = {
         state.selectedAreas = selectedAreas;
     },
     [SET_BUBBLE_AREAS](state, bubbleAreas) {
-        console.log("bubbleareas", bubbleAreas);
         state.bubbleAreas = bubbleAreas;
     }
 
