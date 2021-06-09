@@ -26,5 +26,14 @@ export const GeographyService = {
 export const PostService = {
     getPosts() {
         return Vue.axios.get("http://46.101.87.81:4000/post");
+    },
+    addPost(post){
+        return Vue.axios.post("http://46.101.87.81:4000/post", post);
     }
+}
+export const TagService = {
+    getTags(){
+        return Vue.axios.get("http://46.101.87.81:4000/tag");
+    }
+
 }
