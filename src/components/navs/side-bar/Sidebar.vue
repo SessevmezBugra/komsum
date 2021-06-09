@@ -1,44 +1,38 @@
 <template>
-  <b-container>
-    <b-sidebar id="sidebar-1" title="komsum" width="20%" shadow>
+  <b-sidebar id="sidebar-1" shadow>
+    <b-container>
+      <filter-bar />
+    </b-container>
       <b-tabs content-class="mt-3">
-        <b-tab title="Konum" active>
+        <b-tab title="Komsum" active>
           <geography-list></geography-list>
         </b-tab>
         <b-tab title="Basliklar">
           <tag-list></tag-list>
         </b-tab>
       </b-tabs>
-    </b-sidebar>
-  </b-container>
+  </b-sidebar>
 </template>
 
 <script>
-
-import GeographyList from './GeographyList.vue';
-import TagList from './TagList.vue';
+import FilterBar from "../filter-bar/FilterBar.vue";
+import GeographyList from "./GeographyList.vue";
+import TagList from "./TagList.vue";
 
 export default {
   components: {
     GeographyList,
-    TagList
+    TagList,
+    FilterBar,
   },
   data() {
-    return {
-     
-    };
+    return {};
   },
-  computed: {
-    
-  },
+  computed: {},
 
-  methods: {
-    
-  },
-  mounted() {
-  },
-  created() {
-  },
+  methods: {},
+  mounted() {},
+  created() {},
 };
 </script>
 

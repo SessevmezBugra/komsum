@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-row>
     <b-form-tag
       v-for="selectedArea in selectedAreas"
       @remove="remove(selectedArea)"
@@ -8,10 +8,11 @@
       variant="success"
       class="m-1"
       style="font-size: 0.8rem"
-      >{{ selectedArea.filter }}
-      
+      ><b-container>
+      {{ selectedArea.filter }}
+      </b-container>
     </b-form-tag>
-  </b-container>
+  </b-row>
 </template>
 
 <script>

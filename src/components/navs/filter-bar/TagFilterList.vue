@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-row>
     <b-form-tag
       v-for="tag in selectedTags"
       @remove="remove(tag)"
@@ -8,9 +8,12 @@
       variant="danger"
       class="m-1"
       style="font-size: 0.8rem; cursor: pointer"
-      >{{ tag.trDesc }}
+      >
+      <b-container>
+      {{ tag.trDesc }}
+      </b-container>
     </b-form-tag>
-  </b-container>
+  </b-row>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="menu-list-container">
+  <b-container class="menu-list-container mt-5">
     <b-col>
       <b-row class="mt-2" v-for="menuItemData in data" :key="menuItemData.icon">
         <menu-item

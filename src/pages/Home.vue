@@ -1,43 +1,18 @@
 <template>
-  <div class="app" v-bind:style="{ backgroundColor: color }">
     <b-container fluid>
-      <b-row class="justify-content-md-center">
-        <b-col cols="6">
-          <b-container class="mt-3">
-            <b-row>
-              <b-col><nav-bar /></b-col>
-            </b-row>
-          </b-container> 
-        </b-col>
-      </b-row>
+      <nav-bar/>
+      
       <b-row>
-        <b-col> </b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="3">
+        <b-col cols="3" >
           <side-bar> </side-bar>
         </b-col>
-        <b-col cols="6" class="mt-3">
+        <b-col cols="6" class="mt-5">
           <post-list></post-list>
         </b-col>
 
         <b-col cols="3" class="mt-5"><menu-list></menu-list> </b-col>
       </b-row>
     </b-container>
-
-    <div></div>
-    <!-- <h1>Arkaplan rengi</h1>
-        <div class="color">
-          <input ///TEST
-            type="text"
-            v-bind:style="{ color: color }"
-            v-model="color"
-            maxlength="7"
-            placeholder="#000000"
-          />
-          <input type="color" v-model="color" />
-        </div> -->
-  </div>
 </template>
 
 <script>
@@ -153,27 +128,4 @@ export default {
 
 
 <style>
-/* h1{
-  margin-top: 80px;
-  font-size: 15px;
-  font-family:'Josefin Sans', sans-serif;
-  margin-left: 15px;
-}
-input {
-  font-size: 1rem;
-  border: 0;
-  border-radius: 3px;
-  background: #fff;
-  margin-bottom: 28px; 
-  margin-right: 10px;
-  
-}
-input[type="color"] {
-  width: 30px;
-  border: 1px solid black;
-  padding: 0px !important;
-  height: 30px;
- 
- 
-} */
 </style>
