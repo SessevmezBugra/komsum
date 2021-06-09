@@ -23,8 +23,11 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { FETCH_POST } from '../../store/post/actions.type';
+
+import { ADD_POST, FETCH_POST  } from '../../store/post/actions.type';
+
+
+
 
 export default {
   props: ["addPostBus"],
@@ -34,7 +37,7 @@ export default {
     };
   },
   methods: {
-    addPost() {
+    async addPost() {
       console.log(this.postContent);
       this.$bvModal.hide("modal-1");
       var newPost = {
@@ -42,17 +45,15 @@ export default {
         username: "Hilal",
         content: this.postContent,
       };
-      Vue.axios
-        .post("http://46.101.87.81:4000/post", newPost)
-        .then(() => {
-          this.$store.dispatch(FETCH_POST);
-
-        });
+      await this.$store.dispatch(ADD_POST, newPost);
       this.postContent = null;
+
+      this.$store.dispatch(FETCH_POST);
+  
     },
     showPost() {
       this.$bvModal.show("modal-1");
     },
-  },
+  }
 };
 </script>

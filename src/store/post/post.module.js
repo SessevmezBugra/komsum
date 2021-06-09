@@ -3,7 +3,8 @@ import {
 } from "../../common/api.service";
 
 import {
-    FETCH_POST
+    FETCH_POST,
+    ADD_POST
 } from "./actions.type";
 
 import {
@@ -20,7 +21,10 @@ export const actions = {
     async [FETCH_POST](context) {
         const { data } = await PostService.getPosts();
         context.commit(SET_POST, data);
-    }
+    },
+    async [ADD_POST](context, post){
+        await PostService.addPost(post);
+    },
 }
 
 export const mutations = {

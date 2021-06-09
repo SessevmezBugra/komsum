@@ -46,7 +46,7 @@ export default {
     }
   },
    methods: {
-    getPosts() {
+    getPosts() { 
       this.$store.dispatch(FETCH_POST);
     }
   },
