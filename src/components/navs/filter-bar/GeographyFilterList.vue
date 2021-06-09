@@ -1,15 +1,16 @@
 <template>
   <b-container>
-        <b-form-tag
-          v-for="selectedArea in selectedAreas"
-          @remove="remove(selectedArea)"
-          :key="selectedArea.filterId"
-          :title="selectedArea.filter"
-          variant="success"
-          class="m-1"
-          style="font-size: 0.8rem"
-          >{{ selectedArea.filter }}
-        </b-form-tag>
+    <b-form-tag
+      v-for="selectedArea in selectedAreas"
+      @remove="remove(selectedArea)"
+      :key="selectedArea.filterId"
+      :title="selectedArea.filter"
+      variant="success"
+      class="m-1"
+      style="font-size: 0.8rem"
+      >{{ selectedArea.filter }}
+      
+    </b-form-tag>
   </b-container>
 </template>
 
@@ -61,8 +62,17 @@ export default {
           }
         }
       } else if (selectedArea.areaType == "DISTRICT") {
-        // this.getDistrictByCityId(this.selectedAreas.find(x => x.this.selectedAreas == ));
-        console.log("test",this.selectedAreas);
+        // for (let i = 0; i < this.selectedAreas.length; i++) {
+        //   let comeBackDistricts = this.selectedAreas[i];
+        //   if(comeBackDistricts.areaType == "CITY") {
+        //     this.getDistrictByCityId(comeBackDistricts.filterId);
+        //   }
+        // }
+        var returnedDistricts = this.selectedAreas.find(
+          (x) => x.areaType == "CITY"
+        );
+        this.getDistrictByCityId(returnedDistricts.filterId);
+        console.log(this.selectedAreas, this.districts);
         for (let el = 0; el < this.selectedAreas.length; el++) {
           const deneme = this.selectedAreas[el];
           if (deneme.areaType == "NEIGHBORHOOD") {
@@ -76,6 +86,11 @@ export default {
           }
         }
       } else if (selectedArea.areaType == "NEIGHBORHOOD") {
+        var returnedNeighborhood = this.selectedAreas.find(
+          (x) => x.areaType == "DISTRICT"
+        );
+        this.getNeighborhoodsByDistrictId(returnedNeighborhood.filterId);
+
         for (let index = 0; index < this.selectedAreas.length; index++) {
           const element = this.selectedAreas[index];
           if (element.areaType == "STREET") {
@@ -84,6 +99,12 @@ export default {
             );
           }
         }
+      } else {
+         var returnedStreet = this.selectedAreas.find(
+          (x) => x.areaType == "DISTRICT"
+        );
+        this.getStreetsByNeighborhoodId(returnedStreet.filterId);
+        
       }
       this.$store.dispatch(UPDATE_SELECTED_AREAS, tmpSelectedAreas);
       this.$store.dispatch(REMOVE_SELECTED_AREA, selectedArea);
