@@ -3,8 +3,11 @@
     <b-container fluid>
       <b-row class="justify-content-md-center">
         <b-col cols="6">
-          <nav-bar />
-          <filter-bar />
+          <b-container class="mt-3">
+            <b-row>
+              <b-col><nav-bar /></b-col>
+            </b-row>
+          </b-container> 
         </b-col>
       </b-row>
       <b-row>
@@ -14,11 +17,11 @@
         <b-col cols="3">
           <side-bar> </side-bar>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="6" class="mt-3">
           <post-list></post-list>
         </b-col>
 
-        <b-col cols="3"><menu-list></menu-list> </b-col>
+        <b-col cols="3" class="mt-5"><menu-list></menu-list> </b-col>
       </b-row>
     </b-container>
 
@@ -38,7 +41,7 @@
 </template>
 
 <script>
-import FilterBar from "../components/navs/filter-bar/FilterBar.vue";
+
 import Sidebar from "../components/navs/side-bar/Sidebar";
 import PostList from "../components/post/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
@@ -51,7 +54,7 @@ export default {
     "menu-list": MenuList,
     "nav-bar": Navbar,
     "side-bar": Sidebar,
-    "filter-bar": FilterBar,
+   
   },
   name: "Home",
   data() {

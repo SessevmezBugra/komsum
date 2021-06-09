@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <b-sidebar id="sidebar-1" title="komsum" width="370px" shadow>
+    <b-sidebar id="sidebar-1" title="komsum" width="20%" shadow>
       <b-tabs content-class="mt-3">
         <b-tab title="Konum" active>
           <geography-list></geography-list>

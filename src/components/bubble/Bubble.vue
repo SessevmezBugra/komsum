@@ -1,14 +1,7 @@
 <template>
-  <div>
-    <b-badge
-      class="bubble-badge text-wrap"
-      pill
-      @click="sendToParent"
-      variant="success"
-    >
-      {{ filter }}
-    </b-badge>
-  </div>
+  <b-form-tag no-remove variant="success" class="m-1 form-tag" style="font-size: 0.8rem">
+    <b-container @click="sendToParent">{{ filter }}</b-container>
+  </b-form-tag>
 </template>
 
 <script>
@@ -27,8 +20,7 @@ export default {
 </script>
 
 <style scoped>
-.bubble-badge {
-  width: 100px !important;
+.form-tag {
   cursor: pointer;
 }
 </style>

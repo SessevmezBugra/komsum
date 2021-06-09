@@ -1,9 +1,14 @@
 <template>
-  <b-container class="bubble-list-container">
+  <b-container>
     <b-row class="mt-2">
-        <b-col cols="4" v-for="bubbleData in bubbles" :key="bubbleData.filter">
-            <bubble :bubbleBus="bubbleListBus" :areaType="bubbleData.areaType"  :filter="bubbleData.filter" :filterId="bubbleData.filterId" />
-      </b-col>
+      <bubble
+        v-for="bubbleData in bubbles"
+        :bubbleBus="bubbleListBus"
+        :areaType="bubbleData.areaType"
+        :filter="bubbleData.filter"
+        :filterId="bubbleData.filterId"
+        :key="bubbleData.filter"
+      />
     </b-row>
   </b-container>
 </template>
@@ -13,17 +18,10 @@ export default {
   components: {
     bubble: Bubble,
   },
-  props: [
-      "bubbles",
-      "bubbleListBus"
-  ],
+  props: ["bubbles", "bubbleListBus"],
   data() {
-    return {
-      
-    };
+    return {};
   },
-  methods: {
-      
-  }
+  methods: {},
 };
 </script>
