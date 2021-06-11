@@ -1,22 +1,19 @@
 <template>
-    <b-container fluid>
-      <nav-bar/>
-      
+    <b-container fluid class="position-fixed">
+      <nav-bar />
       <b-row>
-        <b-col cols="3" >
+        <b-col cols="3">
           <side-bar> </side-bar>
         </b-col>
         <b-col cols="6" class="mt-5">
-          <post-list></post-list>
+            <post-list></post-list>
         </b-col>
-
-        <b-col cols="3" class="mt-5"><menu-list></menu-list> </b-col>
+        <b-col cols="3" class="mt-5"> <menu-list></menu-list> </b-col>
       </b-row>
     </b-container>
 </template>
 
 <script>
-
 import Sidebar from "../components/navs/side-bar/Sidebar";
 import PostList from "../components/post/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
@@ -29,7 +26,6 @@ export default {
     "menu-list": MenuList,
     "nav-bar": Navbar,
     "side-bar": Sidebar,
-   
   },
   name: "Home",
   data() {
