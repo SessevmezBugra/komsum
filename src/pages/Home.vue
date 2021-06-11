@@ -14,7 +14,10 @@
         <post-list></post-list>
       </b-col>
 
-      <b-col cols="12" sm="12" lg="3" class="mt-5 menu-list .d-none .d-sm-block .d-md-none"><menu-list></menu-list> </b-col>
+      <b-col cols="3" class="mt-5 d-none d-sm-block"><menu-list></menu-list> </b-col>
+      <b-col class="d-block d-sm-none">
+        <mobile-menu-list/>
+      </b-col>
     </b-row>
   </b-container>
 </template>
@@ -25,6 +28,7 @@ import PostList from "../components/post/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
 import Navbar from "../components/navs/Navbar";
 import FilterBar from "../components/navs/filter-bar/FilterBar.vue";
+import MobileMenuList from "../components/menu/MobileMenuList.vue";
 
 import Vue from "vue";
 
@@ -35,6 +39,7 @@ export default {
     "nav-bar": Navbar,
     "side-bar": Sidebar,
     "filter-bar": FilterBar,
+    "mobile-menu-list": MobileMenuList,
   },
   name: "Home",
   data() {
