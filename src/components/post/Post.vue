@@ -1,17 +1,18 @@
 <template>
-  <div>
-    <b-container>
-      <b-row align-v="center" id="post-component">
-        <b-col class="definition" :avatar="avatar"
-          ><b-avatar src="https://placekitten.com/300/300"></b-avatar>
-          {{ userName }}
+<!-- div içeresindeydi değiştirdim -->
+    <b-container fluid>
+        <b-row id="post-component">
+        <b-col cols="6" lg="6" class="definition">  <b-avatar src="https://placekitten.com/300/300"></b-avatar></b-col>
+      
+     
 
-          <p class="content">{{ content }}</p>
-        </b-col>
-        <b-col class="date">{{ date }}</b-col>
+
+
+          <!-- {{ userName }}
+          <p class="content">{{ content }}</p> -->    
+        <!-- <b-col class="date">{{ date }}</b-col> -->
       </b-row>
     </b-container>
-  </div>
 </template>
 
 
@@ -23,6 +24,7 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
+
 #post-component {
   border: 1px solid;
   box-shadow: 2px 2px 2px 2px #c4c7be;

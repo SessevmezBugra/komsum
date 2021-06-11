@@ -2,7 +2,7 @@
 
   <b-container fluid class="mt-3">
       <filter-bar/>
-    <b-row class="p-3">
+    <b-row>
       <b-col>
         <b-row v-for="postData in fillPosts" :key="postData.avatar" class="mt-2">
           <b-container fluid>
