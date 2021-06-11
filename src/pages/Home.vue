@@ -1,16 +1,22 @@
 <template>
-    <b-container fluid class="position-fixed">
-      <nav-bar />
-      <b-row>
-        <b-col cols="3">
-          <side-bar> </side-bar>
-        </b-col>
-        <b-col cols="6" class="mt-5">
-            <post-list></post-list>
-        </b-col>
-        <b-col cols="3" class="mt-5"> <menu-list></menu-list> </b-col>
-      </b-row>
-    </b-container>
+  <b-container fluid class="position-fixed">
+    <nav-bar />
+    <b-row>
+      <b-col cols="12" sm="12" md="3" lg="3"   class="mt-5">
+        <side-bar></side-bar>
+          <b-row>
+          <b-col class="mt-2">
+            <filter-bar />
+          </b-col>
+        </b-row>
+      </b-col>
+      <b-col cols="6" class="mt-5">
+        <post-list></post-list>
+      </b-col>
+
+      <b-col cols="12" sm="12" lg="3" class="mt-5 menu-list .d-none .d-sm-block .d-md-none"><menu-list></menu-list> </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -18,6 +24,8 @@ import Sidebar from "../components/navs/side-bar/Sidebar";
 import PostList from "../components/post/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
 import Navbar from "../components/navs/Navbar";
+import FilterBar from "../components/navs/filter-bar/FilterBar.vue";
+
 import Vue from "vue";
 
 export default {
@@ -26,6 +34,7 @@ export default {
     "menu-list": MenuList,
     "nav-bar": Navbar,
     "side-bar": Sidebar,
+    "filter-bar": FilterBar,
   },
   name: "Home",
   data() {
@@ -124,4 +133,12 @@ export default {
 
 
 <style>
+
+   /* @media (max-width: 720px) {
+        .menu-list  {
+          display: none;
+        }
+   } */
+
+
 </style>
