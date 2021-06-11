@@ -10,7 +10,7 @@
           </b-col>
         </b-row>
       </b-col>
-      <b-col cols="12" class="mt-5">
+      <b-col cols="12"  md="6" lg="6" class="mt-5">
         <post-list></post-list>
       </b-col>
 

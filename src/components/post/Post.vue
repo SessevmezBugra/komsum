@@ -5,7 +5,7 @@
         <b-col cols="6" sm="6" md="6" lg="6"  class="definition"></b-col>
         <b-col class="definition" cols="12"> <b-avatar class="mr-2" size="2em" src="https://placekitten.com/300/300"></b-avatar>{{ userName }} </b-col>
         <b-col> <p class="content">{{ content }}</p> </b-col>  
-        <!-- <b-col cols="2"  class="date">{{ date }}</b-col>  -->
+        <!-- <b-col class="date">{{ date }}</b-col>  -->
       </b-row>
     </b-container>
 </template>
