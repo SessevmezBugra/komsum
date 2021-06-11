@@ -1,7 +1,6 @@
 <template>
 
   <b-container fluid class="mt-3">
-      <filter-bar/>
     <b-row class="p-3">
       <b-col>
         <b-row v-for="postData in fillPosts" :key="postData.avatar" class="mt-2">
@@ -20,13 +19,11 @@
 import Post from "./Post.vue";
 import { mapGetters } from 'vuex';
 import { FETCH_POST } from '../../store/post/actions.type';
-import FilterBar from '../navs/filter-bar/FilterBar.vue';
 
 
 export default {
   components: {
     "post" : Post,
-    "filter-bar" : FilterBar
 
   },
   data() {
