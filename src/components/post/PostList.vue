@@ -19,13 +19,11 @@
 import Post from "./Post.vue";
 import { mapGetters } from 'vuex';
 import { FETCH_POST } from '../../store/post/actions.type';
-import FilterBar from '../navs/filter-bar/FilterBar.vue';
 
 
 export default {
   components: {
-    "post" : Post,
-    "filter-bar" : FilterBar
+    "post" : Post
 
   },
   data() {
