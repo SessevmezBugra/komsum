@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <b-container fluid class="position-fixed">
     <nav-bar />
     <b-row>
       <b-col cols="12" sm="12" md="3" lg="3"   class="mt-5">
