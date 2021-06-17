@@ -72,11 +72,16 @@
         </b-col>
       </b-row>
     </b-nav-item>
+    <add-post id="mobileMenu" ref="addPost"></add-post>
   </b-nav>
 </template>
 
 <script>
+import AddPost from "../post/AddPost.vue";
 export default {
+  components: {
+    "add-post": AddPost,
+  },
   data() {
     return {
       houseDoor: false,
@@ -114,6 +119,7 @@ export default {
           (this.circleIcon = false);
       } else if (icon === "E") {
         this.circleIcon = !this.circleIcon;
+        this.$refs.addPost.showPost();
         (this.houseDoor = false),
           (this.sunGlasses = false),
           (this.bellIcon = false),
@@ -152,6 +158,5 @@ export default {
 
 .active {
   color: rgb(65, 66, 65);
-  
 }
 </style>

@@ -9,7 +9,7 @@
           :menuBus="bus"
         />
       </b-row>
-      <add-post ref="addPost"></add-post>
+      <add-post id="rightMenu" ref="addPost"></add-post>
     </b-col>
   </b-container>
 </template>

@@ -1,35 +1,26 @@
 <template>
   <b-container fluid class="position-fixed">
     <nav-bar />
-    <b-row>
-      <b-col cols="12" sm="12" md="3" lg="3" class="mt-5">
+    <b-row class="mt-5">
+      <b-col cols="12" sm="12" md="3" lg="3">
         <side-bar></side-bar>
         <b-row>
-          <b-col class="mt-2">
+          <b-col>
             <filter-bar />
           </b-col>
         </b-row>
       </b-col>
-      <b-col cols="12" md="6" lg="6" class="mt-5">
+      <b-col cols="12" md="12" lg="6">
         <post-list></post-list>
-        <div
-          class="
-            menu-list
-            d-none
-            d-md-block
-            d-lg-none
-            d-block
-            d-sm-none
-            d-none
-            d-sm-block
-            d-md-none
-            
-          "
-        >
+        <div class="menu-list d-lg-none">
           <mobile-menu-list />
         </div>
       </b-col>
-      <b-col class="mt-5"><menu-list /></b-col>
+      <b-col>
+        <div class="menu-list d-none d-lg-block">
+          <menu-list />
+        </div>
+      </b-col>
     </b-row>
   </b-container>
 </template>
@@ -151,8 +142,8 @@ export default {
 
 <style>
 /* @media (max-width: 768px) {
-        .menu-list  {
-          display: none;
-        }
-   }   */
+     .position-fixed {
+
+     }
+   }    */
 </style>

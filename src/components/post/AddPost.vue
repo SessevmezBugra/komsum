@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="modal-1" title="Komşuma haber ver:" ok-only>
+  <b-modal :id="id" title="Komşuma haber ver:" ok-only>
     <b-form-textarea
       id="textarea"
       v-model="postContent"
@@ -30,7 +30,7 @@ import { ADD_POST, FETCH_POST  } from '../../store/post/actions.type';
 
 
 export default {
-  props: ["addPostBus"],
+  props: ["addPostBus", "id"],
   data() {
     return {
       postContent: null,
@@ -39,7 +39,7 @@ export default {
   methods: {
     async addPost() {
       console.log(this.postContent);
-      this.$bvModal.hide("modal-1");
+      this.$bvModal.hide("id");
       var newPost = {
         createdAt: new Date(),
         username: "Hilal",
@@ -52,7 +52,7 @@ export default {
   
     },
     showPost() {
-      this.$bvModal.show("modal-1");
+      this.$bvModal.show(this.id);
     },
   }
 };

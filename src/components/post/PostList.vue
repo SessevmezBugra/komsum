@@ -1,9 +1,9 @@
 <template>
-  <b-container fluid class="overflow-auto" style="height: 100vh;">
+  <b-container fluid class="overflow-auto mb-5" style="height: 86vh;">
     <b-row>
       <b-col>
         <post
-          class="mt-3"
+          class="p-2 mt-3"
           avatar="person-circle"
           v-for="postData in fillPosts"
           :key="postData.avatar"
