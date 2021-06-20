@@ -13,7 +13,7 @@
 <script>
 export default {
  methods : {
-   deneme() {
+   scrollNavbar() {
       var prevScrollpos = window.pageYOffset;
       window.onscroll = function () {
         var currentScrollPos = window.pageYOffset;
@@ -28,7 +28,7 @@ export default {
     },
   },
   created()  {
-    this.deneme();
+    this.scrollNavbar();
   }
 };
 </script>
