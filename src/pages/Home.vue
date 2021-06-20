@@ -11,7 +11,13 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col cols="12" md="12" lg="6"  class="overflow-auto mb-5" style="height: 86vh;">
+        <b-col
+          cols="12"
+          md="12"
+          lg="6"
+          class="overflow-auto mb-5"
+          style="height: 86vh"
+        >
           <post-list></post-list>
           <div class="menu-list d-lg-none">
             <mobile-menu-list />
@@ -26,15 +32,15 @@
     </b-container>
 
     <b-container class="d-lg-none">
-      <mobile-navbar/>
+      <mobile-navbar />
       <b-row>
         <b-col cols="12" sm="12" md="3" lg="3">
           <side-bar></side-bar>
           <b-row class="mt-5">
-            <b-col >
-             <div class="mt-2 deneme">
-               <filter-bar />
-               </div>
+            <b-col>
+              <div class="mt-2 deneme">
+                <filter-bar />
+              </div>
             </b-col>
           </b-row>
         </b-col>
@@ -42,15 +48,15 @@
           <post-list></post-list>
           <div class="menu-list d-lg-none">
             <mobile-menu-list />
+            <div class="float-right add-button">
+              <b-button size="sm" variant="primary" class="mb-2 float-right add-button" @click="addPostButton">
+                <b-icon icon="plus-circle-fill "></b-icon>
+              </b-button>
+            </div>
           </div>
         </b-col>
-        <b-col>
-          <div class="menu-list d-none d-lg-block">
-            <menu-list />
-          </div>
-        </b-col>
-        <div class="float-left">Float left on all viewport sizes</div><br>
       </b-row>
+        <add-post id="mobileMenu" ref="addPost"></add-post>
     </b-container>
   </b-container>
 </template>
@@ -63,6 +69,7 @@ import Navbar from "../components/navs/Navbar";
 import FilterBar from "../components/navs/filter-bar/FilterBar.vue";
 import MobileMenuList from "../components/menu/MobileMenuList.vue";
 import MobileNavbar from "../components/navs/MobileNavbar.vue";
+import AddPost from "../components/post/AddPost.vue";
 import Vue from "vue";
 
 export default {
@@ -73,7 +80,8 @@ export default {
     "side-bar": Sidebar,
     "filter-bar": FilterBar,
     "mobile-menu-list": MobileMenuList,
-    "mobile-navbar" : MobileNavbar
+    "mobile-navbar": MobileNavbar,
+    "add-post" : AddPost,
   },
   name: "Home",
   data() {
@@ -158,6 +166,9 @@ export default {
         return;
       }
     },
+    addPostButton() {
+       this.$refs.addPost.showPost();
+    },
   },
   mounted() {
     this.bus.$on("onClickBubble", this.onClickChild);
@@ -178,12 +189,18 @@ export default {
      }
    }    */
 
-  .test {
-    position: fixed;
-    background: #e8e6e6;
-    z-index: 1034;
-    left: 0;
-    right: 0;
-    top: 0;
-  }
+.test {
+  position: fixed;
+  background: #e8e6e6;
+  z-index: 1034;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.add-button {
+  position: fixed;
+  right: 35px;
+  bottom: 50px;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <b-nav tabs justified class="position-fixed fixed-bottom bg-light">
+  <b-nav tabs justified class="position-fixed fixed-bottom bg-light p-1">
     <b-nav-item class="m-0" @click="iconSelected('A')">
       <b-row>
         <b-col class="d-flex justify-content-center">
@@ -7,7 +7,7 @@
             :class="{ active: houseDoor }"
             icon="house-door-fill"
             class="m-0 p-0 icon"
-            font-scale="0.9"
+            font-scale="1"
           ></b-icon>
         </b-col>
       </b-row>
@@ -19,7 +19,7 @@
             :class="{ active: sunGlasses }"
             icon="sunglasses"
             class="m-0 p-0 icon"
-            font-scale="0.9"
+            font-scale="1"
           ></b-icon>
         </b-col>
       </b-row>
@@ -31,7 +31,7 @@
             :class="{ active: bellIcon }"
             icon="bell-fill"
             class="m-0 p-0 icon"
-            font-scale="0.9"
+            font-scale="1"
           ></b-icon>
         </b-col>
       </b-row>
@@ -43,7 +43,7 @@
             :class="{ active: envelopeIcon }"
             icon="envelope-fill"
             class="m-0 p-0 icon"
-            font-scale="0.9"
+            font-scale="1"
           ></b-icon>
         </b-col>
       </b-row>
@@ -60,7 +60,7 @@
         </b-col>
       </b-row>
     </b-nav-item> -->
-    <b-nav-item class="m-0" @click="iconSelected('E')">
+    <!-- <b-nav-item class="m-0" @click="iconSelected('E')">
       <b-row>
         <b-col>
           <b-icon
@@ -71,16 +71,13 @@
           ></b-icon>
         </b-col>
       </b-row>
-    </b-nav-item>
-    <add-post id="mobileMenu" ref="addPost"></add-post>
+    </b-nav-item> -->
   </b-nav>
 </template>
 
 <script>
-import AddPost from "../post/AddPost.vue";
 export default {
   components: {
-    "add-post": AddPost,
   },
   data() {
     return {
@@ -119,7 +116,6 @@ export default {
           (this.circleIcon = false);
       } else if (icon === "E") {
         this.circleIcon = !this.circleIcon;
-        this.$refs.addPost.showPost();
         (this.houseDoor = false),
           (this.sunGlasses = false),
           (this.bellIcon = false),
