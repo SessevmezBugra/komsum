@@ -49,6 +49,7 @@
             <menu-list />
           </div>
         </b-col>
+        <div class="float-left">Float left on all viewport sizes</div><br>
       </b-row>
     </b-container>
   </b-container>
