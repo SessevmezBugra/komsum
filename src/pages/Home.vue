@@ -1,27 +1,56 @@
 <template>
-  <b-container fluid class="position-fixed">
-    <nav-bar />
-    <b-row class="mt-5">
-      <b-col cols="12" sm="12" md="3" lg="3">
-        <side-bar></side-bar>
-        <b-row>
-          <b-col>
-            <filter-bar />
-          </b-col>
-        </b-row>
-      </b-col>
-      <b-col cols="12" md="12" lg="6">
-        <post-list></post-list>
-        <div class="menu-list d-lg-none">
-          <mobile-menu-list />
-        </div>
-      </b-col>
-      <b-col>
-        <div class="menu-list d-none d-lg-block">
-          <menu-list />
-        </div>
-      </b-col>
-    </b-row>
+  <b-container fluid>
+    <b-container fluid class="position-fixed d-none d-lg-block">
+      <nav-bar />
+      <b-row class="mt-5">
+        <b-col cols="12" sm="12" md="3" lg="3">
+          <side-bar></side-bar>
+          <b-row class="mt-3">
+            <b-col>
+              <filter-bar />
+            </b-col>
+          </b-row>
+        </b-col>
+        <b-col cols="12" md="12" lg="6"  class="overflow-auto mb-5" style="height: 86vh;">
+          <post-list></post-list>
+          <div class="menu-list d-lg-none">
+            <mobile-menu-list />
+          </div>
+        </b-col>
+        <b-col cols="3">
+          <div class="menu-list d-none d-lg-block">
+            <menu-list />
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+
+    <b-container class="d-lg-none">
+      <mobile-navbar/>
+      <b-row>
+        <b-col cols="12" sm="12" md="3" lg="3">
+          <side-bar></side-bar>
+          <b-row class="mt-5">
+            <b-col >
+             <div class="mt-2 deneme">
+               <filter-bar />
+               </div>
+            </b-col>
+          </b-row>
+        </b-col>
+        <b-col cols="12" md="12" lg="6" class="mb-5">
+          <post-list></post-list>
+          <div class="menu-list d-lg-none">
+            <mobile-menu-list />
+          </div>
+        </b-col>
+        <b-col>
+          <div class="menu-list d-none d-lg-block">
+            <menu-list />
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </b-container>
 </template>
 
@@ -31,9 +60,9 @@ import PostList from "../components/post/PostList.vue";
 import MenuList from "../components/menu/MenuList.vue";
 import Navbar from "../components/navs/Navbar";
 import FilterBar from "../components/navs/filter-bar/FilterBar.vue";
-
-import Vue from "vue";
 import MobileMenuList from "../components/menu/MobileMenuList.vue";
+import MobileNavbar from "../components/navs/MobileNavbar.vue";
+import Vue from "vue";
 
 export default {
   components: {
@@ -43,6 +72,7 @@ export default {
     "side-bar": Sidebar,
     "filter-bar": FilterBar,
     "mobile-menu-list": MobileMenuList,
+    "mobile-navbar" : MobileNavbar
   },
   name: "Home",
   data() {
@@ -146,4 +176,13 @@ export default {
 
      }
    }    */
+
+  .test {
+    position: fixed;
+    background: #e8e6e6;
+    z-index: 1034;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
 </style>

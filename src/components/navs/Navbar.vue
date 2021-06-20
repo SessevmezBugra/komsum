@@ -1,5 +1,5 @@
 <template>
-  <b-navbar fixed="top" variant="secondary">
+  <b-navbar  variant="secondary" fixed="top">
     <b-icon
       icon="filter"
       font-scale="2"

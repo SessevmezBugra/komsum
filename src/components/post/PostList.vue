@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid class="overflow-auto mb-5" style="height: 86vh;">
+  <b-container fluid>
     <b-row>
       <b-col>
         <post
