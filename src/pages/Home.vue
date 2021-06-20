@@ -49,7 +49,7 @@
           <div class="menu-list d-lg-none">
             <mobile-menu-list />
             <div class="float-right add-button">
-              <b-button size="sm" variant="primary" class="mb-2 float-right add-button" @click="addPostButton">
+              <b-button size="lg" variant="light" class="mb-2 float-right add-button" @click="addPostButton">
                 <b-icon icon="plus-circle-fill "></b-icon>
               </b-button>
             </div>
