@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: komsum-pod
+  labels:
+      app: komsum
+      type: front-end
+      tier: front-end
+spec:
+  containers:
+    - name: komsum-ui-app
+      image: bsessevmez/komsum-ui-app:0.0.1
