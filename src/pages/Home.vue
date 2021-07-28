@@ -71,6 +71,7 @@ import MobileMenuList from "../components/menu/MobileMenuList.vue";
 import MobileNavbar from "../components/navs/MobileNavbar.vue";
 import AddPost from "../components/post/AddPost.vue";
 import Vue from "vue";
+import { BASE_SERVICE_URI } from "../common/constants";
 
 export default {
   components: {
@@ -96,7 +97,7 @@ export default {
   methods: {
     getCities() {
       Vue.axios
-        .get("http://46.101.87.81:4000/geography/city")
+        .get(BASE_SERVICE_URI + "/geography/city")
         .then((response) => {
           for (var data of response.data) {
             this.bubblesData.push({
@@ -109,7 +110,7 @@ export default {
     },
     getDistrictByCityId(cityId) {
       Vue.axios
-        .get("http://46.101.87.81:4000/geography/district/city/" + cityId)
+        .get(BASE_SERVICE_URI + "/geography/district/city/" + cityId)
         .then((response) => {
           for (var data of response.data) {
             this.bubblesData.push({
@@ -123,7 +124,7 @@ export default {
     getNeighborhoodsByDistrictId(districtId) {
       Vue.axios
         .get(
-          "http://46.101.87.81:4000/geography/neighborhood/district/" +
+          BASE_SERVICE_URI + "/geography/neighborhood/district/" +
             districtId
         )
         .then((response) => {
@@ -139,7 +140,7 @@ export default {
     getStreetsByNeighborhoodId(neighborhoodId) {
       Vue.axios
         .get(
-          "http://46.101.87.81:4000/geography/street/neighborhood/" +
+          BASE_SERVICE_URI + "/geography/street/neighborhood/" +
             neighborhoodId
         )
         .then((response) => {
