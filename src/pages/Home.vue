@@ -171,6 +171,7 @@ export default {
     },
   },
   mounted() {
+    console.log(process.env.VUE_APP_TEST);
     this.bus.$on("onClickBubble", this.onClickChild);
   },
   created() {

@@ -1,39 +1,42 @@
 import Vue from "vue";
+import { BASE_SERVICE_URI } from "./constants";
 
 export const GeographyService = {
 
+    
     getCities() {
         return Vue.axios
-            .get("http://46.101.87.81:4000/geography/city");
+            .get(BASE_SERVICE_URI + "/geography/city");
     },
 
     getDistrictByCityId(cityId) {
         return Vue.axios
-            .get("http://46.101.87.81:4000/geography/district/city/" + cityId);
+            .get(BASE_SERVICE_URI + "/geography/district/city/" + cityId);
     },
 
     getNeighborhoodsByDistrictId(districtId) {
         return Vue.axios
-            .get("http://46.101.87.81:4000/geography/neighborhood/district/" + districtId);
+            .get(BASE_SERVICE_URI + "/geography/neighborhood/district/" + districtId);
     },
 
     getStreetsByNeighborhoodId(neighborhoodId) {
         return Vue.axios
-            .get("http://46.101.87.81:4000/geography/street/neighborhood/" + neighborhoodId);
+            .get(BASE_SERVICE_URI + "/geography/street/neighborhood/" + neighborhoodId);
     },
 }
 
 export const PostService = {
     getPosts() {
-        return Vue.axios.get("http://46.101.87.81:4000/post");
+        console.log(BASE_SERVICE_URI);
+        return Vue.axios.get(BASE_SERVICE_URI + "/post");
     },
     addPost(post){
-        return Vue.axios.post("http://46.101.87.81:4000/post", post);
+        return Vue.axios.post(BASE_SERVICE_URI + "/post", post);
     }
 }
 export const TagService = {
     getTags(){
-        return Vue.axios.get("http://46.101.87.81:4000/tag");
+        return Vue.axios.get(BASE_SERVICE_URI + "/tag");
     }
 
 }
