@@ -17,6 +17,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import store from "./store";
 import Keycloak from "keycloak-js";
+import { LOGIN, LOGOUT } from "./store/user/actions.type";
 
 
 Vue.use(BootstrapVue)
@@ -49,12 +50,23 @@ keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
     } else {
         console.log("Authenticated");
 
+        if (keycloak.token && keycloak.idToken && keycloak.token != '' && keycloak.idToken != '') {
+            store.dispatch(LOGIN, keycloak);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${keycloak.token}`
+            console.log("User has logged in: " + keycloak.subject)
+        }
+        else {
+            store.dispatch(LOGOUT);
+        }
+
         new Vue({
             el: '#app',
             router,
             store,
-            render: h => h(App, { props: { keycloak: keycloak } })
-        }).$mount("#app");
+            render: h => h(App)
+        });
+
+        
     }
 
 
@@ -62,16 +74,27 @@ keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
     setInterval(() => {
         keycloak.updateToken(70).then((refreshed) => {
             if (refreshed) {
-                console.log('Token refreshed' + refreshed);
+                console.log("refreshed: " + refreshed)
+                if (keycloak.token && keycloak.idToken && keycloak.token != '' && keycloak.idToken != '') {
+                    store.dispatch(LOGIN, keycloak);
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${keycloak.token}`
+                    console.log("User has logged in: " + keycloak.subject)
+                }
+                else {
+                    // store.dispatch(LOGOUT);
+                }
             } else {
+                // store.dispatch(LOGOUT);
                 console.log('Token not refreshed, valid for '
                     + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
             }
         }).catch(() => {
+            store.dispatch(LOGOUT);
             console.log('Failed to refresh token');
         });
     }, 6000)
 
 }).catch(() => {
+    store.dispatch(LOGOUT);
     console.log("Authenticated Failed");
 });
